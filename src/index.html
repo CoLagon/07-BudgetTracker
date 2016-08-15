@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="budgetTracker">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="mainCtrl">
+    <div  class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-lg-6">
+                <form name="income" role="form">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Income Entries</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group" >
+                                <label for="incomeText">Description</label>
+                                <input ng-model="myObject.name" type="text" class="form-control" placeholder="Enter the Description">
+                            </div>
+                            <label for="amount">Amount</label>
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">
+								<i class="glyphicon glyphicon-usd"></i>
+								</span>
+                                <input ng-model="myObject.amount" type="text" class="form-control" placeholder="Enter the Amount">
+                            </div>
+                            <div for="button">
+                                <button ng-click="addy()" class="btn btn-block btn-success"><i class="glyphicon glyphicon-plus "></i>Add income</button>
+                            </div>
+                            <hr>
+                            <div>
+								<table class="table">
+									<tbody>
+										
+										<tr ng-repeat="item in myArray">
+											<td class="alignleft">{{item.name}}</td>
+											<td class="alignright">{{item.amount | currency: "$": 0}}</td>
+										</tr>
+									</tbody>
+								</table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-lg-6">
+                        <form name="income" role="form">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Expense Entries</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="incomeText">Description</label>
+                                        <input ng-model="theObject.name" type="text" class="form-control" placeholder="Enter the Description">
+                                    </div>
+                                    <label for="expense">Amount</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">
+										<i class="glyphicon glyphicon-usd"></i>
+										</span>
+                                        <input ng-model="theObject.amount" type="text" class="form-control" placeholder="Enter the Amount">
+                                    </div>
+                                    <div for="button">
+                                        <button ng-click="second()" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-plus "></i>Add Expense</button>
+                                    </div>
+                                    <hr>
+                                    <div class="table">
+										<table>
+											<tbody>
+												<tr ng-repeat="thing in theArray">
+													<td class="alignleft">{{thing.name}}</td>
+													<td class="alignright">{{thing.amount | currency: "$": 0}}</td>
+												</tr>
+											</tbody>
+										</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                 </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-lg-6">
+                                <form name="income" role="form">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Summary</h3>
+                                        </div>
+                                        <div class="panel-body text-center">
+                                            <div class="form-group">
+                                                <label for="income">Total Income</label>
+                                                <p>{{totalIncome | currency: '$'}}</p>
+                                            </div>
+                                            <div>
+                                            	<label for="expense">Total Expense</label>
+                                            	<p>{{totalExpense | currency: '$'}}</p>
+                                            </div>
+                                            <div for="spending">
+                                                <label>Left After Spending</label>
+                                                <p>{{leftAfterSpending | currency: '$'}}</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- bower:js -->
+                            <script src="bower_components/angular/angular.js"></script>
+                            <script src="bower_components/jquery/dist/jquery.js"></script>
+                            <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+                            <!-- endbower -->
+                            <!-- inject:js -->
+                            <script src="js/app.js"></script>
+                            <!-- endinject -->
+</body>
+
+</html>
